@@ -41,18 +41,12 @@
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" placeholder="Email của bạn" required
                             autocomplete="email" autofocus>
-                        <label for="email">
-                            <i class="fas fa-envelope me-2"></i>Địa chỉ Email
-                        </label>
                     </div>
 
                     <!-- Password Field -->
                     <div class="form-floating">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                             name="password" placeholder="Mật khẩu" required autocomplete="current-password">
-                        <label for="password">
-                            <i class="fas fa-lock me-2"></i>Mật khẩu
-                        </label>
                     </div>
 
                     <!-- Remember Me & Forgot Password -->

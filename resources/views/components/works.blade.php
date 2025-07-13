@@ -9,146 +9,37 @@
     </div>
 
     <div class="row folio-entries">
+        @if ($works->count() > 0)
+            @foreach ($works as $work)
+                <div class="column entry" style="padding-top: 10px;">
+                    <a href="{{ Storage::disk('public')->url($work->gallery_image) }}" class="entry__link glightbox"
+                        data-glightbox="title: {{ $work->title }}; description: .entry__desc-{{ $work->id }}">
+                        <div class="entry__thumb">
+                            <img src="{{ Storage::disk('public')->url($work->thumbnail_image) }}"
+                                @if ($work->thumbnail_2x) srcset="{{ Storage::disk('public')->url($work->thumbnail_image) }} 1x, {{ Storage::disk('public')->url($work->thumbnail_2x) }} 2x" @endif
+                                alt="{{ $work->title }}"
+                                onerror="this.onerror=null; this.src='{{ asset('images/placeholder.jpg') }}';">
+                        </div>
+                        <div class="entry__info">
+                            <h4 class="entry__title">{{ $work->title }}</h4>
+                            <div class="entry__cat">{{ $work->category }}</div>
+                        </div>
+                    </a>
 
-        <div class="column entry">
-            <a href="images/folio/gallery/g-turban.jpg" class="entry__link glightbox"
-                data-glightbox="title: White Knit Cap; description: .entry__desc-01">
-                <div class="entry__thumb">
-                    <img src="images/folio/white_turban.jpg"
-                        srcset="images/folio/white_turban.jpg 1x, images/folio/white_turban@2x.jpg 2x" alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">White Knit Cap</h4>
-                    <div class="entry__cat">Frontend Design</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-01">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
-        <div class="column entry">
-            <a href="images/folio/gallery/g-woodcraft.jpg" class="entry__link glightbox"
-                data-glightbox="title: WoodCraft; description: .entry__desc-02">
-                <div class="entry__thumb">
-                    <img src="images/folio/woodcraft.jpg"
-                        srcset="images/folio/woodcraft.jpg 1x, images/folio/woodcraft@2x.jpg 2x" alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">WoodCraft</h4>
-                    <div class="entry__cat">Product Design</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-02">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
-        <div class="column entry">
-            <a href="images/folio/gallery/g-tulips.jpg" class="entry__link glightbox"
-                data-glightbox="title: Caffeine & Tulips; description: .entry__desc-03">
-                <div class="entry__thumb">
-                    <img src="images/folio/caffeine_and_tulips.jpg"
-                        srcset="images/folio/caffeine_and_tulips.jpg 1x, images/folio/caffeine_and_tulips@2x.jpg 2x"
-                        alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">Caffeine & Tulips</h4>
-                    <div class="entry__cat">Brand Identity</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-03">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
-        <div class="column entry">
-            <a href="images/folio/gallery/g-grayscale.jpg" class="entry__link glightbox"
-                data-glightbox="title: Grayscale; description: .entry__desc-04">
-                <div class="entry__thumb">
-                    <img src="images/folio/grayscale.jpg"
-                        srcset="images/folio/grayscale.jpg 1x, images/folio/grayscale@2x.jpg 2x" alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">Grayscale</h4>
-                    <div class="entry__cat">Product Design</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-04">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
-        <div class="column entry">
-            <a href="images/folio/gallery/g-lamp.jpg" class="entry__link glightbox"
-                data-glightbox="title: The Lamp; description: .entry__desc-05">
-                <div class="entry__thumb">
-                    <img src="images/folio/lamp.jpg" srcset="images/folio/lamp.jpg 1x, images/folio/lamp@2x.jpg 2x"
-                        alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">The Lamp</h4>
-                    <div class="entry__cat">Brand Identity</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-05">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
-        <div class="column entry">
-            <a href="images/folio/gallery/g-tropical.jpg" class="entry__link glightbox"
-                data-glightbox="title: Tropical; description: .entry__desc-06">
-                <div class="entry__thumb">
-                    <img src="images/folio/tropical.jpg"
-                        srcset="images/folio/tropical.jpg 1x, images/folio/tropical@2x.jpg 2x" alt="">
-                </div>
-                <div class="entry__info">
-                    <h4 class="entry__title">Tropical</h4>
-                    <div class="entry__cat">Frontend Design</div>
-                </div>
-            </a>
-
-            <div class="glightbox-desc entry__desc-06">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Inventore ipsum iste soluta fugiat, impedit illum ducimus
-                    deleniti facilis ab, tempora non! Nisi, tempora provident.
-                    <a href="https://www.behance.net/">Project Link</a>.
-                </p>
-            </div>
-        </div> <!-- entry -->
-
+                    <div class="glightbox-desc entry__desc-{{ $work->id }}">
+                        <p>
+                            {{ $work->description }}
+                            @if ($work->project_link)
+                                <a href="{{ $work->project_link }}" target="_blank" rel="noopener noreferrer">Project
+                                    Link</a>.
+                            @endif
+                        </p>
+                    </div>
+                </div> <!-- entry -->
+            @endforeach
+        @else
+            <h2 class="text-display-title">No Works.</h2>
+        @endif
     </div> <!-- folio entries -->
 
 

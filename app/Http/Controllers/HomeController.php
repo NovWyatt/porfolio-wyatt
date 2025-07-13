@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutMe;
+use App\Models\Contact;
+use App\Models\Footer;
+use App\Models\Social;
+use App\Models\Work;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('portfolio');
+        $socials = Social::orderBy('sort_order', 'asc')->get();
+        $aboutMe = AboutMe::first();
+        $contacts = Contact::active()->ordered()->get();
+        $footer = Footer::first();
+        $works = Work::active()->ordered()->get();
+        return view('portfolio', compact('socials','aboutMe','contacts','footer','works'));
     }
 }

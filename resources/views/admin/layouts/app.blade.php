@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +86,7 @@
 
         .navbar {
             background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .content-wrapper {
@@ -147,6 +148,7 @@
 
     @stack('styles')
 </head>
+
 <body>
     <!-- Sidebar -->
     <nav class="sidebar">
@@ -160,7 +162,7 @@
         <ul class="sidebar-nav nav flex-column">
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
-                   href="{{ route('admin.dashboard') }}">
+                    href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-tachometer-alt"></i>
                     Dashboard
                 </a>
@@ -168,7 +170,7 @@
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.about-me.*') ? 'active' : '' }}"
-                   href="{{ route('admin.about-me.index') }}">
+                    href="{{ route('admin.about-me.index') }}">
                     <i class="fas fa-user"></i>
                     About Me
                 </a>
@@ -176,7 +178,7 @@
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.works.*') ? 'active' : '' }}"
-                   href="{{ route('admin.works.index') }}">
+                    href="{{ route('admin.works.index') }}">
                     <i class="fas fa-briefcase"></i>
                     Dự án
                 </a>
@@ -184,7 +186,7 @@
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.socials.*') ? 'active' : '' }}"
-                   href="{{ route('admin.socials.index') }}">
+                    href="{{ route('admin.socials.index') }}">
                     <i class="fas fa-share-alt"></i>
                     Social Links
                 </a>
@@ -192,7 +194,7 @@
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}"
-                   href="{{ route('admin.contacts.index') }}">
+                    href="{{ route('admin.contacts.index') }}">
                     <i class="fas fa-address-book"></i>
                     Liên hệ
                 </a>
@@ -200,9 +202,17 @@
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.footer.*') ? 'active' : '' }}"
-                   href="{{ route('admin.footer.index') }}">
+                    href="{{ route('admin.footer.index') }}">
                     <i class="fas fa-edit"></i>
                     Footer
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.cv.*') ? 'active' : '' }}"
+                    href="{{ route('admin.cv.index') }}">
+                    <i class="fas fa-file-pdf"></i>
+                    CV
                 </a>
             </li>
 
@@ -239,7 +249,7 @@
                 <div class="navbar-nav ms-auto">
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
-                           role="button" data-bs-toggle="dropdown">
+                            role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle me-2"></i>
                             {{ Auth::user()->name }}
                         </a>
@@ -261,7 +271,7 @@
         <!-- Content -->
         <div class="content-wrapper">
             <!-- Alerts -->
-            @if(session('success'))
+            @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <i class="fas fa-check-circle me-2"></i>
                     {{ session('success') }}
@@ -269,7 +279,7 @@
                 </div>
             @endif
 
-            @if(session('error'))
+            @if (session('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <i class="fas fa-exclamation-circle me-2"></i>
                     {{ session('error') }}
@@ -277,11 +287,11 @@
                 </div>
             @endif
 
-            @if($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <i class="fas fa-exclamation-triangle me-2"></i>
                     <ul class="mb-0">
-                        @foreach($errors->all() as $error)
+                        @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
@@ -313,4 +323,5 @@
 
     @stack('scripts')
 </body>
+
 </html>

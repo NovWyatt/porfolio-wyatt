@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\CVController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +21,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('portfolio');
-})->name('portfolio.index');
 
 Auth::routes([
     'register' => false,
@@ -55,4 +53,17 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/footer', [FooterController::class, 'index'])->name('footer.index');
     Route::get('/footer/edit', [FooterController::class, 'edit'])->name('footer.edit');
     Route::put('/footer', [FooterController::class, 'update'])->name('footer.update');
+
+    // Admin routes
+        Route::get('/cv', [CVController::class, 'adminIndex'])->name('cv.index');
+        Route::post('/cv/upload', [CVController::class, 'upload'])->name('cv.upload');
+        Route::delete('/cv/{cv}', [CVController::class, 'destroy'])->name('cv.destroy');
+        Route::patch('/cv/{cv}/activate', [CVController::class, 'setActive'])->name('cv.activate');
 });
+
+// Public routes
+Route::get('/cv', [CVController::class, 'view'])->name('cv.view');
+Route::get('/cv/download', [CVController::class, 'download'])->name('cv.download');
+Route::get('/cv/stream', [CVController::class, 'stream'])->name('cv.stream');
+
+Route::get('/', [HomeController::class, 'index'])->name('portfolio.index');

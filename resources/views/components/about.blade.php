@@ -7,22 +7,18 @@
                 <h2 class="text-display-title">About Me.</h2>
             </div> <!-- end section-header -->
 
-            <p class="attention-getter">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas explicabo id debitis cupiditate
-                cumque, error quia! Debitis cupiditate ipsa nihil labore, earum atque dolor quos saepe vero inventore,
-                odit nam deleniti accusantium omnis mollitia consequatur harum incidunt! Ex modi aut repudiandae
-                doloremque commodi recusandae labore sit. Perspiciatis omnis dolor dolores fuga iusto, recusandae animi
-                nisi consequuntur exercitationem id maxime earum pariatur voluptas! Porro non quos quae tempora fuga
-                quis sequi minus sed sint debitis reiciendis, nostrum natus suscipit iusto odio.
-            </p>
+            @if ($aboutMe && $aboutMe->content)
+                <p class="attention-getter">
+                    {!! nl2br(e($aboutMe->content)) !!}
+                </p>
+            @else
+                <!-- Fallback content nếu không có dữ liệu -->
+                <p class="attention-getter">
+                    Welcome to my website! I'm passionate about creating amazing digital experiences.
+                </p>
+            @endif
 
-            <p class="attention-getter">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Ut enim ad minim
-            </p>
-
-            <div class="grid-list-items s-about__blocks">
+            {{-- <div class="grid-list-items s-about__blocks">
 
                 <div class="grid-list-items__item s-about__block">
                     <h4 class="s-about__block-title">Experience</h4>
@@ -112,7 +108,8 @@
                     </ul>
                 </div> <!--end s-about__block -->
 
-            </div> <!-- grid-list-items -->
+            </div> --}}
+            <!-- grid-list-items -->
 
         </div> <!--end column -->
     </div> <!--end s-about__content -->
